@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './demo.scss'
 class ChildComponent extends React.Component {
 
     state = {
@@ -11,17 +11,24 @@ class ChildComponent extends React.Component {
             { showJob: !this.state.showJob }
         )
     }
+
+    handleOnclickDelete = (job) => {
+        // console.log('>>>  handleOnclickDelete', job)
+        this.props.deleteJob(job);
+    }
     render() {
         // let name = this.props.name;
         // let age = this.props.age;
-        let { arrayJob } = this.props;
-        let { showJob } = this.state;
+        let { arrayJob } = this.props; // hứng đc data từ th cha
+        let { showJob } = this.state;  // state ban đầu
         return (
             <>
 
                 {showJob === false ?
                     <div>
-                        <button onClick={() => { this.handleShowHide() }}>Show</button>
+                        <button
+                            className='btn-show'
+                            onClick={() => { this.handleShowHide() }}>Show</button>
                     </div>
                     :
                     <>
@@ -38,17 +45,23 @@ class ChildComponent extends React.Component {
 
                         })
                     } */}
-
                             {
                                 arrayJob.map((item, index) => {
                                     return (
                                         <div key={item.id}>
-                                            {item.title} - {item.salary}
+                                            {item.title} - {item.salary} <></>
+                                            <span
+                                                onClick={() => { this.handleOnclickDelete(item) }}>
+                                                x
+                                            </span>
                                         </div>
                                     )
                                 })}
                         </div>
-                        <div><button onClick={() => { this.handleShowHide() }}>Hide</button></div>
+
+                        <div>
+                            <button onClick={() => { this.handleShowHide() }}>Hide</button>
+                        </div>
                     </>
                 }
             </>

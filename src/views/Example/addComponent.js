@@ -25,8 +25,8 @@ class AddComponent extends React.Component {
             return;
         }
         console.log('>>> check data input', this.state)
-        this.props.addNewJob({
-            id: Math.floor(Math.random() * 1001),
+        this.props.addNewJob({ // gọi function được truyền từ cha 
+            id: Math.floor(Math.random() * 1001), // truyền lại cho th cha 3 phần tử gồm {id title salary} tại state của th con, 
             title: this.state.title,
             salary: this.state.salary
         })
