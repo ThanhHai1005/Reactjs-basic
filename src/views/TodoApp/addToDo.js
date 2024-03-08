@@ -26,6 +26,9 @@ class AddToDo extends React.Component {
             title: ''
         })
     }
+    handleDelete = (job) => {
+        this.props.deleteJob(job);
+    }
     render() {
         let title = this.state
         return (

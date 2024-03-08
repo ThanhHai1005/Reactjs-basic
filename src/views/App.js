@@ -13,8 +13,8 @@ function App() {
         <p>
           Hello world with React.js (Gwen)
         </p>
-        <Mycomponent />
-        {/* <ToDoList /> */}
+        {/* <Mycomponent /> */}
+        <ToDoList />
       </header>
 
       <ToastContainer

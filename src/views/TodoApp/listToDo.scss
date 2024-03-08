@@ -16,11 +16,11 @@
 
         .toDo-child {
             &:first-child {
-                border-top: 1px solid grey;
+                // border-top: 1px solid grey;
             }
 
             height: 40px;
-            border-bottom: 1px solid grey;
+            // border-bottom: 1px solid grey;
             margin: 10px;
 
             .edit {

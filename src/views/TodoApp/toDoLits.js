@@ -2,6 +2,8 @@ import React from 'react';
 import './listToDo.scss'
 import AddToDo from './addToDo';
 import { toast } from 'react-toastify';
+import EditDeleteTodo from './deleteToDo';
+
 
 class ToDoList extends React.Component {
     state = {
@@ -19,28 +21,36 @@ class ToDoList extends React.Component {
         })
         toast.success("Wow so easy!");
     }
+
+    editJob = () => {
+        alert('click edit')
+    }
+
+    deleteJob = (job) => {
+        let currentJobs = this.state.listTool;
+        currentJobs = currentJobs.filter(item => item.id !== job.id);
+        this.setState({
+            listTool: currentJobs
+        })
+
+    }
+
     render() {
-        let { listTool } = this.state;
+
         return (
             <>
                 <div className='toDo-list-container'>
-                    <AddToDo
-                        addNewToDo={this.addNewToDo}
-                    />
+                    <AddToDo addNewToDo={this.addNewToDo} />
 
                     <div className='toDo-list-content'>
-
-                        {listTool && listTool.length > 0 &&
-                            listTool.map((item, index) => {
-                                return (
-                                    <div className='toDo-child' key={item.id}>
-                                        <span>{index + 1} - {item.title}</span>
-                                        <button className='edit'>Edit</button>
-                                        <button className='delete'>Delete</button>
-                                    </div>
-                                )
-                            })
-                        }
+                        <div className='toDo-child' >
+                            {/* <EditTodo editJob={this.editJob} /> */}
+                            <EditDeleteTodo
+                                listTool={this.state.listTool}
+                                editJob={this.editJob}
+                                deleteJob={this.deleteJob}
+                            />
+                        </div>
 
 
                     </div>
