@@ -14,7 +14,7 @@ class AddToDo extends React.Component {
 
     handleOnClick = () => {
         if (!this.state.title) {
-            toast.error("Missing required parameter");
+            toast.error("Missing required parameter!");
             return;
         }
         this.props.addNewToDo({

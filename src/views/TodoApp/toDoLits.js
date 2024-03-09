@@ -11,7 +11,8 @@ class ToDoList extends React.Component {
             { id: 'toDo1', title: 'Doing homeWork' },
             { id: 'toDo2', title: 'Making Video' },
             { id: 'toDo3', title: 'fix bug' }
-        ]
+        ],
+        editTodo: {}
     }
 
 
@@ -22,9 +23,7 @@ class ToDoList extends React.Component {
         toast.success("Wow so easy!");
     }
 
-    editJob = () => {
-        alert('click edit')
-    }
+
 
     deleteJob = (job) => {
         let currentJobs = this.state.listTool;
@@ -33,6 +32,26 @@ class ToDoList extends React.Component {
             listTool: currentJobs
         })
 
+    }
+
+    editJob = (todo) => {
+        this.setState({
+            editTodo: todo
+        })
+    }
+
+
+    edittodoJob = (editTodoCopy) => {
+        this.setState({
+            editTodo: editTodoCopy
+        })
+    }
+
+    changeJob = (listTodoCopy) => {
+        this.setState({
+            listTool: listTodoCopy,
+            editTodo: {}
+        })
     }
 
     render() {
@@ -44,11 +63,13 @@ class ToDoList extends React.Component {
 
                     <div className='toDo-list-content'>
                         <div className='toDo-child' >
-                            {/* <EditTodo editJob={this.editJob} /> */}
                             <EditDeleteTodo
                                 listTool={this.state.listTool}
+                                editTodo={this.state.editTodo}
                                 editJob={this.editJob}
                                 deleteJob={this.deleteJob}
+                                edittodoJob={this.edittodoJob}
+                                changeJob={this.changeJob}
                             />
                         </div>
 
